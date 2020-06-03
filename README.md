@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
@@ -44,6 +44,3 @@ You can learn more in the [Create React App documentation](https://facebook.gith
 
 To learn React, check out the [React documentation](https://reactjs.org/).
 =======
-# ReactFE-BE
-Carl rippon text book project with React FE and .Net Core 3 BE
->>>>>>> fd343ebf1140a0ffcadee1505c409949290bf9ff
