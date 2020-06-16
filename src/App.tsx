@@ -1,5 +1,4 @@
 import React, { lazy, Suspense } from 'react';
-import { Header } from './components/Header';
 import { HomePage } from './components/HomePage';
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core';
@@ -9,6 +8,7 @@ import { SearchPage } from './components/SearchPage';
 import { SignInPage } from './components/SignInPage';
 import { NotFoundPage } from './components/NotFoundPage';
 import { QuestionPage } from './components/QuestionPage';
+import { HeaderWithRouter as Header } from './components/Header';
 const AskPage = lazy(() => import('./components/AskPage'));
 
 const App = () => (

@@ -2,12 +2,15 @@
 import { css, jsx } from '@emotion/core';
 import { fontFamily, fontSize, gray1, gray2, gray5 } from './../Styles';
 import UserIcon from './UserIcon';
-import { ChangeEvent } from 'react';
-import { Link, BrowserRouter } from 'react-router-dom';
+import { ChangeEvent, FC, useState } from 'react';
+import { Link, RouteComponentProps, withRouter } from 'react-router-dom';
 
-export const Header = () => {
+export const Header: FC<RouteComponentProps> = ({ location, history }) => {
+	const searchParams = new URLSearchParams(location.search);
+	const criteria = searchParams.get('criteria') || '';
+	const [ search, setState ] = useState(criteria);
 	const handleSearchInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-		console.log(e.currentTarget.value);
+		setState(e.currentTarget.value);
 	};
 	return (
 		<div
@@ -36,26 +39,29 @@ export const Header = () => {
 			>
 				Q & A
 			</Link>
-			<input
-				type="text"
-				placeholder="Search..."
-				css={css`
-					box-sizing: border-box;
-					font-family: ${fontFamily};
-					font-size: ${fontSize};
-					padding: 8px 10px;
-					border: 1px solid ${gray5};
-					border-radius: 3px;
-					color: ${gray2};
-					background-color: white;
-					width: 200px;
-					height: 30px;
-					:focus {
-						outline-color: ${gray5};
-					}
-				`}
-				onChange={handleSearchInputChange}
-			/>
+			<form>
+				<input
+					type="text"
+					placeholder="Search..."
+					value={search}
+					css={css`
+						box-sizing: border-box;
+						font-family: ${fontFamily};
+						font-size: ${fontSize};
+						padding: 8px 10px;
+						border: 1px solid ${gray5};
+						border-radius: 3px;
+						color: ${gray2};
+						background-color: white;
+						width: 200px;
+						height: 30px;
+						:focus {
+							outline-color: ${gray5};
+						}
+					`}
+					onChange={handleSearchInputChange}
+				/>
+			</form>
 			<Link
 				to="./signin"
 				css={css`
@@ -80,3 +86,4 @@ export const Header = () => {
 		</div>
 	);
 };
+export const HeaderWithRouter = withRouter(Header);
